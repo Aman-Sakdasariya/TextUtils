@@ -10,55 +10,86 @@ export default function TextForm({ heading, mode, showAlert, btnColor }) {
             setText(transformed);
             showAlert("Converted to First case",'Success');
         }
+        else{
+            showAlert("Enter some text first", "Error")
+        }
     };
     // Uppercase
     const handleUpClick = () => {
+        if(text.length > 0){
         setText(text.toUpperCase());
-        showAlert("Converted to Uppercase",'Success');
+        showAlert("Converted to Uppercase",'Success');}
+        else{
+            showAlert("Enter some text first", "Error")
+        }
     };
 
     // Lowercase
     const handleLoClick = () => {
+         if (text.length > 0) {
         setText(text.toLowerCase());
-        showAlert("Converted to Lowercase",'Success');
+        showAlert("Converted to Lowercase",'Success');}
+        else{
+            showAlert("Enter some text first", "Error")
+        }
     };
 
     // PascalCase
     const handlePascalClick = () => {
+         if (text.length > 0) {
         pascal = text.split(' ')
         pascal = pascal.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
         pascal = pascal.join('');
         setText(pascal)
         pascal = ''
-        showAlert("Converted to Pascal Case",'Success');
+        showAlert("Converted to Pascal Case",'Success');}
+        else{
+            showAlert("Enter some text first", "Error")
+        }
     };
 
     // CamellCase
     const handleCamellClick = () => {
+         if (text.length > 0) {
         pascal = text.split(' ')
         pascal = pascal.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
         pascal = pascal.join('');
         pascal = pascal.charAt(0).toLowerCase() + pascal.slice(1);
         setText(pascal)
         pascal = ''
-        showAlert("Converted to Camell Case",'Success');
+        showAlert("Converted to Camell Case",'Success');}
+        else{
+            showAlert("Enter some text first", "Error")
+        }
     }
     //Extra Spaces
     const handleExtraSpacelClick = () => {
+        if (text.length > 0) {
         let newText = text.split(/[ ]+/);
         setText(newText.join(' '));
-        showAlert("Removed Extra spaces",'Success');
+        showAlert("Removed Extra spaces",'Success');}
+        else{
+            showAlert("Enter some text first", "Error")
+        }
     }
     // Clear textbox
     const handleClearClick = () => {
+        if (text.length > 0) {
         setText('');
-        showAlert("Textbox Cleared",'Success');
+        showAlert("Textbox Cleared",'Success');}
+        else{
+            showAlert("Enter some text first", "Error")
+        }
     };
 
     // Copy text
     const handleCopyClick = () => {
+         if (text.length > 0) {
         navigator.clipboard.writeText(text);
-        showAlert("Text Copied",'Success');
+        showAlert("Text Copied",'Success');}
+        else{
+            showAlert("Enter some text first", "Error")
+        }
     };
 
     // Handle checkbox change
