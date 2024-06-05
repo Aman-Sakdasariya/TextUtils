@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+  
+    # Deny access to specific directories
+    RewriteRule ^static/ - [F,L]
+    RewriteRule ^\..* - [F,L]
+  
+    # Deny access to specific files
+    <FilesMatch "\.(json|md|txt)$">
+      Order Allow,Deny
+      Deny from all
+    </FilesMatch>
+  
+    # Serve index.html for all other requests
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+  </IfModule>
+  
+  # Deny directory listing for all directories
+  Options -Indexes
+  
+  # Deny access to hidden files starting with a dot
+  <FilesMatch "^\.">
+    Order Allow,Deny
+    Deny from all
+  </FilesMatch>
+  
