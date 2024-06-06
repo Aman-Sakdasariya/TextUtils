@@ -1,4 +1,3 @@
-// thia is commit
 import './App.css';
 import Nevbar from './components/Nevbar';
 import TextForm from './components/TextForm';
